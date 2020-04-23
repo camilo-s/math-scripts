@@ -1,5 +1,5 @@
 # math-scripts
-SageMath scripts supporting computations for research papers
+SageMath scripts (python-based language) supporting computations for research papers
 
 This repository hosts the scripts I used to support my research while I was working as a research mathematician. 
 
