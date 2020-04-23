@@ -1,3 +1,4 @@
+# This script contains routines to generate the illustrations and computations for the paper On power ideals of transversal matroids and their “parking functions”", published in Algebraic Combinatorics 2.4 (2019) 573-583 (https://doi.org/10.5802/alco.57)
 
 from sage.graphs.independent_sets import IndependentSets
 from collections import OrderedDict
@@ -6,7 +7,7 @@ allLetters=string.lowercase
 from sage.matroids.advanced import *
 
 def transM(sys):
-    # receives a collection of r subsets of a ground set
+    # receives a collection sys of r subsets of a ground set
     # generates the corresponding transversal matroid
     # also gives a representation matrix
     r = len(sys)
@@ -49,7 +50,7 @@ def transM(sys):
 
 def parkIt(A):
 
-    # takes as input a matrix repMat 
+    # takes as input a matrix A 
 
     # first find the lines in the arrangement defined by repMat.
 
@@ -125,7 +126,7 @@ def graphArrgt(g):
     
 
 def pIdeal(A):
-    # given a d\times n matrix representing a matroid M
+    # given a d\times n matrix A representing a matroid M
     # writes the generators of the power ideal of its
     # associated hyperplane arrangement. variable indexes
     # start at 1

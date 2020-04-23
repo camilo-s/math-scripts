@@ -1,3 +1,7 @@
+# This script contains routines to generate the illustrations for the paper "Geometry of v-Tamari lattices in types A and B", written in collaboration with Cesar Ceballos and Arnau Padrol and published in Transactions of the American Mathematical Society, 371 (2019) 2575-2622 (https://doi.org/10.1090/tran/7405)
+
+# Below are a couple of test cases used for debugging purposes
+
 #forests=[[(0,1),(0,10),(2,4),(3,4),(5,7),(6,7),(8,10),(9,10)], [(0,1),(0,10),(2,4),(3,4),(5,10),(6,7),(8,10),(9,10)], [(0,1),(0,10),(2,7),(3,4),(5,7),(6,7),(8,10),(9,10)], [(0,1),(0,10),(2,10),(3,4),(5,10),(6,7),(8,10),(9,10)], [(0,1),(0,10),(2,10),(3,4),(5,7),(6,7),(8,10),(9,10)]]
 
 #forests=[[(0,10),(1,3),(2,3),(4,6),(5,6),(7,9),(8,9)], [(0,10),(1,3),(2,3),(4,6),(5,6),(7,10),(8,9)], [(0,10),(1,3),(2,3),(4,10),(5,6),(7,9),(8,9)], [(0,10),(1,10),(2,3),(4,6),(5,6),(7,9),(8,9)], [(0,10),(1,3),(2,3),(4,9),(5,6),(7,9),(8,9)], [(0,10),(1,9),(2,3),(4,6),(5,6),(7,9),(8,9)], [(0,10),(1,6),(2,3),(4,6),(5,6),(7,9),(8,9)], [(0,10),(1,3),(2,3),(4,10),(5,6),(7,10),(8,9)], [(0,10),(1,10),(2,3),(4,6),(5,6),(7,10),(8,9)], [(0,10),(1,10),(2,3),(4,10),(5,6),(7,9),(8,9)], [(0,10),(1,10),(2,3),(4,10),(5,6),(7,10),(8,9)], [(0,10),(1,9),(2,3),(4,9),(5,6),(7,9),(8,9)], [(0,10),(1,6),(2,3),(4,6),(5,6),(7,10),(8,9)], [(0,10),(1,10),(2,3),(4,9),(5,6),(7,9),(8,9)]]
@@ -34,6 +38,8 @@ def coveringForests(I,J):
     #is the simplicial complex whose simplices consist of pairwise cyclically
     #noncrossing edges. then it computes the boundary, and the minimal faces
     # not in the boundary, which are the covering forests
+
+    # returns a list of covering forests
 
     #first we compute the cyclically noncrossing complex:
     
@@ -80,6 +86,9 @@ def coveringForests(I,J):
     #print coveringForests
 
 def getInequalities(F):
+    # computes the inequality description, in polymake format (a matrix), of the bounded
+    # cell corresponding to covering forest F
+    
     I=[]
     J=[]
     for arc in F:
@@ -88,8 +97,7 @@ def getInequalities(F):
     I.sort()
     J.sort()
     
-    # computes the inequality description, in polymake format (a matrix), of the bounded
-    # cell corresponding to covering forest F
+
     # An inequality a0 + a1 x1 + … + ad xd >= 0 is encoded as a row vector (a0,a1,…,ad)
     ineqs=[]
     for a in F:        
@@ -106,7 +114,7 @@ def getInequalities(F):
     return ineqs
 
 def nonCrossingHeight(i,j,n):
-    # evaluates a cyclicalli non-crossing height function at a pair i, \ol j
+    # evaluates a cyclically non-crossing height function at a pair i, \ol j
     # where the period of cyclicity is n
     #f= numerical_approx(10*log((j-i)%(n+1)))
     f=(-1)*numerical_approx(3^(-((j-i)%(n+1))))
